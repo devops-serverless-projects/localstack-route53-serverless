@@ -1,0 +1,15 @@
+{
+    "Port": 4566,
+    "Type": "HTTPS",
+    "ResourcePath": "/hello",
+    "FullyQualifiedDomainName": "8b821511.execute-api.localhost.localstack.cloud",
+    "RequestInterval": 10,
+    "FailureThreshold": 3,
+    "MeasureLatency": false,
+    "Inverted": false,
+    "Disabled": false,
+    "HealthThreshold": 2,
+    "EnableSNI": false,
+    "Regions": ["us-east-1","us-east-2","us-west-1","us-west-2"],
+    "InsufficientDataHealthStatus" : "Unhealthy"
+  }

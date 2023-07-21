@@ -1,0 +1,40 @@
+service: sls-apigw
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage,'local'}
+  stackName: sls-apigw
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: !Sub 'arn:aws:s3:::*'  
+
+custom:
+  region: ${opt:region}
+  accountID: '000000000000'
+  localstack:
+    stages: [local]
+    host: http://127.0.0.1
+    debug: true
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+  goodbye:
+    handler: handler.goodbye
+    events:
+      - httpApi:
+          path: /goodbye
+          method: get
+
+plugins:
+  - serverless-localstack
+  - serverless-deployment-bucket
